@@ -5,7 +5,11 @@ description: AviUtl ExEdit2のLuaスクリプトの更新履歴について説�
 
 # 更新履歴
 
-## 2.00 beta19 <Badge text='2025/11/2' />
+## 2.00 beta18b <Badge text='2025/11/2' />
+
+- 時間制御(オブジェクト)の対象レイヤー範囲が正しく反映されないことがあるのを修正
+
+## 2.00 beta18a <Badge text='2025/11/2' />
 
 - `--dialog`の`/chk`をnumber型で返却するように修正
 - obj.effect_idを追加
