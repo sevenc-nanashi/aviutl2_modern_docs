@@ -5,6 +5,11 @@ description: AviUtl ExEdit2のLuaスクリプトの更新履歴について説�
 
 # 更新履歴
 
+## 2.00 beta19 <Badge text='2025/11/2' />
+
+- `--dialog`の`/chk`をnumber型で返却するように修正
+- obj.effect_idを追加
+
 ## 2.00 beta18 <Badge text='2025/11/1' />
 
 - obj.rand1()の乱数範囲を調整

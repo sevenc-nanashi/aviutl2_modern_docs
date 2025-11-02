@@ -5,6 +5,10 @@ description: AviUtl ExEdit2の更新履歴について説明しています。
 
 # 更新履歴
 
+## 2.00 beta18a <Badge text="2025/11/2" />
+
+- プラグイン、スクリプト機能の修正
+
 ## 2.00 beta18 <Badge text="2025/11/1" />
 
 - 音声をPCM(float)32bitでファイル出力した時に落ちることがあるのを修正
