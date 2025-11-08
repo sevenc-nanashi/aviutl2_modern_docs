@@ -5,6 +5,14 @@ description: AviUtl ExEdit2のLuaスクリプトの更新履歴について説�
 
 # 更新履歴
 
+## 2.00 beta19 <Badge text='2025/11/8' />
+
+- グループ制御に追加したスクリプトのobj.draw()が正しく描画されないのを修正
+- obj.getvalue("scenechange")の精度を修正
+- obj.computeshader()にサンプラーの指定を追加
+- obj.pixelshader(),obj.computeshader()のresourceに"random"を追加
+- obj.data(),'--data'の定義を追加
+
 ## 2.00 beta18a <Badge text='2025/11/2' />
 
 - `--dialog`の`/chk`をnumber型で返却するように修正

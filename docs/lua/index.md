@@ -117,6 +117,17 @@ obj.load("text", txt)
 --value@table:配列,{0,0,0}
 ```
 
+### 汎用データ領域を定義
+
+スクリプトファイルの先頭で`--data@登録名:サイズ(1024バイト以下)`のように指定すると汎用データ領域が有効になります。※スクリプトモジュールやDLL向けになります。
+obj.data("登録名")で汎用データ領域のポインタ(ユーザーデータ)が取得できます。
+デフォルト値はユーザーデータの領域を0クリアした値になります。
+
+```aulua
+--data@pos,8
+local pos = obj.data("pos")
+```
+
 ### オブジェクト追加メニューのラベルを定義
 
 スクリプトファイルの先頭で`--label:ラベル名`のように指定するとオブジェクト追加メニューの階層のラベルの初期値を設定できます。
@@ -982,6 +993,7 @@ n, rate, buf = obj.getaudio(nil, "c:\\test.wav", "pcm.r", 1000)
   - `"tempbuffer"`：仮想バッファ
   - `"framebuffer"`：フレームバッファ
   - `"cache:xxxx"`：キャッシュバッファ（xxxxは任意の名前）
+  - `"random"`：乱数バッファ(0.0～1.0の乱数値の256x256の領域)※DXGI_FORMAT_R32_FLOAT（r値のみ）になります
 - `constant`：参照する定数の配列
   Direct3Dの定数バッファ（b0）にfloatの配列として設定されます。
 - `blend`：出力先へのブレンド方法
@@ -998,29 +1010,39 @@ n, rate, buf = obj.getaudio(nil, "c:\\test.wav", "pcm.r", 1000)
   - `"mirror"`：領域外は領域を反転しながらループ
   - `"dot"`：拡大縮小補間をしない（領域外は透明色）
 
-### obj.computeshader(name,{target},{resource,...}[,{constant,...},countX,countY,countZ])
+### obj.computeshader(name,{target},{resource,...}[,{constant,...},countX,countY,countZ,sampler])
 
 コンピュートシェーダーを実行します。
 
 - `name`：シェーダーの登録名 ※登録したシェーダー名を文字列で指定します。
 - `target`：読み書き先のバッファ名の配列（1つの場合は直接バッファ名で指定出来ます）
   Direct3DのUnorderedAccessリソース（u0～）に設定されます。
-  - `"object"`=オブジェクト
-  - `"tempbuffer"`=仮想バッファ
-  - `"framebuffer"`=フレームバッファ
-  - `"cache:xxxx"`=キャッシュバッファ（xxxxは任意の名前）
+  - `"object"`：オブジェクト
+  - `"tempbuffer"`：仮想バッファ
+  - `"framebuffer"`：フレームバッファ
+  - `"cache:xxxx"`：キャッシュバッファ（xxxxは任意の名前）
 - `resource`：参照するバッファ名の配列（1つの場合は直接バッファ名で指定出来ます）
   Direct3Dのシェーダーリソース（t0～）に設定されます。
   ※UnorderedAccessと同一の場合は複製して設定されます
-  - `"object"`=オブジェクト
-  - `"tempbuffer"`=仮想バッファ
-  - `"framebuffer"`=フレームバッファ
-  - `"cache:xxxx"`=キャッシュバッファ（xxxxは任意の名前）
+  - `"object"`：オブジェクト
+  - `"tempbuffer"`：仮想バッファ
+  - `"framebuffer"`：フレームバッファ
+  - `"cache:xxxx"`：キャッシュバッファ（xxxxは任意の名前）
+  - `"random"`：乱数バッファ（0.0～1.0の乱数値の256x256の領域）※DXGI_FORMAT_R32_FLOAT（r値のみ）になります
 - `constant`：参照する定数の配列
   Direct3Dの定数バッファ（b0）にfloatの配列として設定されます。
 - `countX`：X軸スレッドグループ数 ※未指定の場合は1
 - `countY`：Y軸スレッドグループ数 ※未指定の場合は1
 - `countZ`：Z軸スレッドグループ数 ※未指定の場合は1
+
+- `sampler`：サンプラーの種別
+  Direct3DのSamplerState（s0）を設定します。※デフォルトは未設定
+  - `"clip"`：領域外（0.0～1.0の範囲外）は透明色
+  - `"clamp"`：領域外は境界の色
+  - `"loop"`：領域外は領域をループ
+
+*                            "mirror"    = 領域外は領域を反転しながらループ
+*                            "dot"       = 拡大縮小補間をしない(領域外は透明色)
 
 ### obj.getpoint(target[,option])
 
@@ -1106,6 +1128,14 @@ version = obj.getinfo("version")
 ```
 
 - 戻り値：本体のバージョン番号
+
+### obj.data(name)
+
+汎用データ領域を取得します。
+※スクリプトモジュールやDLL向けになります。
+
+- `name`：汎用データ領域の登録名
+- `戻り値`：汎用データ領域のポインタ（ユーザーデータ）
 
 ### obj.module(name)
 
