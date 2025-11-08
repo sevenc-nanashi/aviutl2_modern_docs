@@ -141,7 +141,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/aviutl2/aviutl2_docs_mirror",
+        link: "https://github.com/aviutl2/aviutl2_modern_docs",
       },
     ],
 
