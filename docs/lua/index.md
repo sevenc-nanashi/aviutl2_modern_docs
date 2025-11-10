@@ -352,7 +352,7 @@ obj.drawpoly(vertex)
 - `{x,y,z,u,v,vx,vy,vz}`：頂点座標 + テクスチャ座標 + 法線ベクトル
 - `{x,y,z,r,g,b,a}`：頂点座標 + 頂点の色
 - `{x,y,z,r,g,b,a,vx,vy,vz}`：頂点座標 + 頂点の色 + 法線ベクトル
-- `vertex_num`：面の頂点数( 4\<デフォルト\>=四角形 / 3=三角形 )
+- `vertex_num`：面の頂点数( 4\<デフォルト\>：四角形 / 3：三角形 )
 
 ※テーブルは面の頂点数で割り切れる数になります
 ※u,vはオブジェクトの正規化座標(0.0～1.0)
@@ -440,7 +440,7 @@ obj.load("text", "この文字が画像として読み込まれます")
 - `color`：色（0x000000～0xffffff）
 - `size`：図形のサイズ
 - `line`：図形のライン幅
-- `round`：角を丸くするか？（ `true`=する / `false`\<デフォルト\>=しない ）
+- `round`：角を丸くするか？（ `true`：する / `false`\<デフォルト\>：しない ）
 
 例：
 
@@ -454,7 +454,7 @@ obj.load("figure", "円", 0xffffff, 100, true)
 `load("framebuffer"[,x,y,w,h][,alpha])`
 
 - `x,y,w,h`：フレームバッファから取得する範囲（省略時は全体）
-- `alpha`：アルファチャンネルを維持（ `true`=する / `false`\<デフォルト\>=しない ）
+- `alpha`：アルファチャンネルを維持（ `true`：する / `false`\<デフォルト\>：しない ）
 
 #### 仮想バッファ
 
@@ -470,7 +470,7 @@ obj.load("figure", "円", 0xffffff, 100, true)
 `obj.load("layer",no[,effect])`
 
 - `no`：レイヤー番号（1～）
-- `effect`：追加エフェクトの実行（ `true`=する / `false`\<デフォルト\>=しない ）
+- `effect`：追加エフェクトの実行（ `true`：する / `false`\<デフォルト\>：しない ）
 
 #### 直前オブジェクト
 
@@ -590,13 +590,13 @@ obj.draw(),obj.drawpoly()の描画先をフレームバッファにします。
 
 `obj.setoption("draw_state",flag)`
 
-- `flag`：`true`=描画済み / `false`=未描画
+- `flag`：`true`：描画済み / `false`：未描画
 
 #### オブジェクトのフォーカス枠モード
 
 `obj.setoption("focus_mode",value)`
 
-- `value`：`"fixed_size"`=大きさ固定の枠にする
+- `value`：`"fixed_size"`：大きさ固定の枠にする
 
 #### カメラのパラメータを設定する
 
@@ -668,7 +668,7 @@ obj.getoption("track_mode","vx")
 `obj.getoption("script_name"[,value][,skip])`
 
 - `value`：フィルタ効果の上下の相対位置（0は自分/マイナスは上/プラスは下）
-- `skip`：無効になっているフィルタ効果をスキップするか（ `true`=する / `false`\<デフォルト\>=しない ）
+- `skip`：無効になっているフィルタ効果をスキップするか（ `true`：する / `false`\<デフォルト\>：しない ）
 - 戻り値：スクリプト名（対象がスクリプト以外なら空のテキスト）
 
 例：
@@ -681,7 +681,7 @@ if obj.getoption("script_name") == obj.getoption("script_name", -1) then
 
 `obj.getoption("gui")`
 
-- 戻り値：`true`=表示 / `false`=非表示
+- 戻り値：`true`：表示 / `false`：非表示
 
 ※動画の出力中は非表示状態になります。
 
@@ -712,7 +712,7 @@ cam = obj.getoption("camera_param")
 
 `obj.getoption("multi_object")`
 
-- 戻り値：`true`=有効 / `false`=無効
+- 戻り値：`true`：有効 / `false`：無効
 
 ### obj.getvalue(target[,time,section])
 
@@ -760,13 +760,13 @@ cam = obj.getoption("camera_param")
 - `num`：アンカーポイントの数を指定します。
   `name="track"`の場合は0を指定して下さい。アンカーポイント数は開始終了中間点の数になります。
 - `option`：各種オプションを列挙出来ます。
-  - `"line"`=アンカーポイントを線で結びます。
-  - `"loop"`=アンカーポイントを線で結び一周させます。
-  - `"star"`=アンカーポイントをオブジェクトの中心とそれぞれ線で結びます。
-  - `"arm"`=アンカーポイントとオブジェクトの中心を線で結びます。
-  - `"color"`=上記オプションの線の色を変更します。後続の引数に色（0x000000～0xffffff）を指定します。
-  - `"inout"`=上記オプションの線の表示をIN,OUT側の2個として表示します。（アンカー数は半々になります）
-  - `"xyz"`=アンカーポイントを3D座標で制御します。※デフォルトは2D座標
+  - `"line"`：アンカーポイントを線で結びます。
+  - `"loop"`：アンカーポイントを線で結び一周させます。
+  - `"star"`：アンカーポイントをオブジェクトの中心とそれぞれ線で結びます。
+  - `"arm"`：アンカーポイントとオブジェクトの中心を線で結びます。
+  - `"color"`：上記オプションの線の色を変更します。後続の引数に色（0x000000～0xffffff）を指定します。
+  - `"inout"`：上記オプションの線の表示をIN,OUT側の2個として表示します。（アンカー数は半々になります）
+  - `"xyz"`：アンカーポイントを3D座標で制御します。※デフォルトは2D座標
     ※カメラ制御+シャドーで使用する場合にプレビューで影部分が少しずれる場合があります。
 - 戻り値：取得したアンカーポイントの数
 
@@ -857,13 +857,13 @@ obj.pixeloption("get",xxx)を処理することで能動的にキャッシュを
 
 `obj.pixeloption("get",value)`
 
-- `value`：`"object"`=オブジェクト / `"framebuffer"`=フレームバッファ
+- `value`：`"object"`：オブジェクト / `"framebuffer"`：フレームバッファ
 
 #### ピクセル情報の書き込み先を指定する
 
 `obj.pixeloption("put",value)`
 
-- `value`：`"object"`=オブジェクト / `"framebuffer"`=フレームバッファ
+- `value`：`"object"`：オブジェクト / `"framebuffer"`：フレームバッファ
 
 #### 書き込む時のブレンドタイプを指定する
 
@@ -949,17 +949,17 @@ n, rate, buf = obj.getaudio(nil, "c:\\test.wav", "pcm.r", 1000)
 ※コピー先の画像バッファのサイズはコピー元のサイズに変更されます。
 
 - `dst`：コピー先のバッファ
-  - `"tempbuffer"`=仮想バッファ
-  - `"object"`=オブジェクト
-  - `"cache:xxxx"`=キャッシュバッファ（xxxxは任意の名前）
-  - `"framebuffer"`=フレームバッファ（コピー元が同サイズのオブジェクト、仮想バッファ、キャッシュバッファのみ対応）
+  - `"tempbuffer"`：仮想バッファ
+  - `"object"`：オブジェクト
+  - `"cache:xxxx"`：キャッシュバッファ（xxxxは任意の名前）
+  - `"framebuffer"`：フレームバッファ（コピー元が同サイズのオブジェクト、仮想バッファ、キャッシュバッファのみ対応）
 - `src`：コピー元のバッファ
-  - `"framebuffer"`=フレームバッファ
-  - `"object"`=オブジェクト
-  - `"tempbuffer"`=仮想バッファ
-  - `"cache:xxxx"`=キャッシュバッファ（xxxxは任意の名前）
-  - `"image:xxxx"`=画像ファイル（xxxxはスクリプトフォルダからの相対パスの画像ファイル名）
-- 戻り値：`true`=成功 / `false`=失敗
+  - `"framebuffer"`：フレームバッファ
+  - `"object"`：オブジェクト
+  - `"tempbuffer"`：仮想バッファ
+  - `"cache:xxxx"`：キャッシュバッファ（xxxxは任意の名前）
+  - `"image:xxxx"`：画像ファイル（xxxxはスクリプトフォルダからの相対パスの画像ファイル名）
+- 戻り値：`true`：成功 / `false`：失敗
 
 キャッシュバッファの名前は全てのオブジェクトで共通となります。
 キャッシュバッファは1フレームの描画毎に破棄されます。
@@ -969,10 +969,10 @@ n, rate, buf = obj.getaudio(nil, "c:\\test.wav", "pcm.r", 1000)
 画像バッファをクリアします。
 
 - `target`：クリアするバッファ名
-  - `"object"`=オブジェクト
-  - `"tempbuffer"`=仮想バッファ
-  - `"framebuffer"`=フレームバッファ
-  - `"cache:xxxx"`=キャッシュバッファ（xxxxは任意の名前）
+  - `"object"`：オブジェクト
+  - `"tempbuffer"`：仮想バッファ
+  - `"framebuffer"`：フレームバッファ
+  - `"cache:xxxx"`：キャッシュバッファ（xxxxは任意の名前）
 - `color`：色（0x000000～0xffffff） ※未指定の場合は透明色
 
 ### obj.pixelshader(name,target,{resource,...}[,{constant,...},blend,sampler])
@@ -1052,17 +1052,17 @@ n, rate, buf = obj.getaudio(nil, "c:\\test.wav", "pcm.r", 1000)
   - 整数=各区間でのトラックバー値
     0=開始点 / 1=最初の中間点 / 2=2個目の中間点 / ...
     optionで取得する関連トラックの相対位置を指定することが出来ます。
-  - `"index"`=現在の区間での位置を取得します。
+  - `"index"`：現在の区間での位置を取得します。
     開始点と最初の中間点の間の場合は0.5等の少数で表されます。
-  - `"num"`=開始終了中間点の総数を取得します。
-  - `"time"`=現在の時間を取得します。
+  - `"num"`：開始終了中間点の総数を取得します。
+  - `"time"`：現在の時間を取得します。
     optionで時間を取得する区間を指定することができます。
-  - `"accelerate"`=加速度が設定されているかを取得します。
-    戻り値：`true`=有効 / `false`=無効
-  - `"decelerate"`=減速度が設定されているかを取得します。
-    戻り値：`true`=有効 / `false`=無効
-  - `"param"`=トラックバーの設定値を取得します。
-  - `"link"`=関連トラックでのインデックスと総数を取得します。
+  - `"accelerate"`：加速度が設定されているかを取得します。
+    戻り値：`true`：有効 / `false`：無効
+  - `"decelerate"`：減速度が設定されているかを取得します。
+    戻り値：`true`：有効 / `false`：無効
+  - `"param"`：トラックバーの設定値を取得します。
+  - `"link"`：関連トラックでのインデックスと総数を取得します。
     `index, num = obj.getpoint("link")`
     関連トラックは座標等で他のトラックの値を取得する為に使用します。
     X座標での戻り値：0,3 / Y座標での戻り値：1,3 / Z座標での戻り値：2,3
@@ -1092,7 +1092,7 @@ obj.getinfo("script_path")
 obj.getinfo("saving")
 ```
 
-- 戻り値：`true`=出力中 / `false`=非出力中
+- 戻り値：`true`：出力中 / `false`：非出力中
 
 #### 最大画像サイズを取得する
 
