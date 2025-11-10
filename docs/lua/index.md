@@ -1040,9 +1040,8 @@ n, rate, buf = obj.getaudio(nil, "c:\\test.wav", "pcm.r", 1000)
   - `"clip"`：領域外（0.0～1.0の範囲外）は透明色
   - `"clamp"`：領域外は境界の色
   - `"loop"`：領域外は領域をループ
-
-*                            "mirror"    = 領域外は領域を反転しながらループ
-*                            "dot"       = 拡大縮小補間をしない(領域外は透明色)
+  - `"mirror"`：領域外は領域を反転しながらループ
+  - `"dot"`：拡大縮小補間をしない（領域外は透明色）
 
 ### obj.getpoint(target[,option])
 
