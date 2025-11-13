@@ -7,12 +7,16 @@ import { customFence } from "./extensions/customFence.ts";
 import { asterisk } from "./extensions/asterisk.ts";
 import llmstxt from "vitepress-plugin-llms";
 
+const logoSvgUrl = "/aviutl2.svg";
+const logoPngUrl = "/aviutl2.png";
+const description = "AviUtl2のドキュメントを見やすくした非公式サイト";
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "docs",
 
   title: "AviUtl2 Modern Docs",
-  description: "AviUtl2のドキュメントを見やすくした非公式サイト",
+  description: description,
   cleanUrls: true,
   vite: {
     plugins: [
@@ -23,6 +27,9 @@ export default defineConfig({
         },
       }),
     ],
+    server: {
+      allowedHosts: true,
+    },
   },
   transformHead(ctx) {
     ctx.head.push([
@@ -37,6 +44,69 @@ export default defineConfig({
       {
         property: "og:site_name",
         content: "AviUtl2 Modern Docs",
+      },
+    ]);
+    ctx.head.push([
+      "meta",
+      {
+        property: "og:description",
+        content: ctx.pageData.description || description,
+      },
+    ]);
+    ctx.head.push([
+      "meta",
+      {
+        property: "og:type",
+        content: "website",
+      },
+    ]);
+    ctx.head.push([
+      "meta",
+      {
+        property: "og:image",
+        content: logoPngUrl,
+      },
+    ]);
+    ctx.head.push([
+      "meta",
+      {
+        name: "twitter:card",
+        content: "summary",
+      },
+    ]);
+    ctx.head.push([
+      "meta",
+      {
+        name: "twitter:title",
+        content: ctx.pageData.title,
+      },
+    ]);
+    ctx.head.push([
+      "meta",
+      {
+        name: "twitter:description",
+        content: ctx.pageData.description || description,
+      },
+    ]);
+    ctx.head.push([
+      "meta",
+      {
+        name: "twitter:image",
+        content: logoPngUrl,
+      },
+    ]);
+    ctx.head.push([
+      "link",
+      {
+        rel: "icon",
+        href: logoSvgUrl,
+      },
+    ]);
+    ctx.head.push([
+      "link",
+      {
+        rel: "apple-touch-icon",
+        href: logoPngUrl,
       },
     ]);
   },
@@ -170,10 +240,11 @@ export default defineConfig({
       next: "次へ",
     },
 
+    logo: logoSvgUrl,
+
     footer: {
-      message:
-        "AviUtl2 Unofficial Mirrorは有志が作成した非公式ミラーサイトです。",
-      copyright: "(c) 2025 Nanashi. / Original work by KEN-kun.",
+      message: "AviUtl2 Modern Docsは有志が作成した非公式ミラーサイトです。",
+      copyright: "© 2025 Nanashi. / Original work by KEN-kun.",
     },
   },
 });
