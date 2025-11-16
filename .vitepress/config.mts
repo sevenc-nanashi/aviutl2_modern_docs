@@ -1,11 +1,11 @@
 import { defineConfig } from "vitepress";
 import { jaModel, Parser } from "budoux";
 import markdownItBudoux from "markdown-it-budoux";
+import llmstxt from "vitepress-plugin-llms";
 import { auluaGrammar } from "./extensions/aulua.ts";
 import { autxtGrammar } from "./extensions/autxt.ts";
 import { customFence } from "./extensions/customFence.ts";
 import { asterisk } from "./extensions/asterisk.ts";
-import llmstxt from "vitepress-plugin-llms";
 
 const logoSvgUrl = "/aviutl2.svg";
 const logoPngUrl = "/aviutl2.png";

@@ -5,6 +5,11 @@ description: AviUtl ExEdit2のLuaスクリプトの更新履歴について説�
 
 # 更新履歴
 
+## 2.00 beta20 <Badge text='2025/11/16' />
+
+- obj.sx,obj.sy,obj.szの項目を追加
+- obj.getvalue()に基準拡大率("sx","sy","sz")の指定を追加
+
 ## 2.00 beta19 <Badge text='2025/11/8' />
 
 - グループ制御に追加したスクリプトのobj.draw()が正しく描画されないのを修正

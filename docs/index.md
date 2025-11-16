@@ -3,7 +3,7 @@ title: ホーム
 description: AviUtl ExEdit2の動作環境や使用上の注意、互換性などについて説明しています。
 ---
 
-# AviUtl ExEdit2 version 2.00 beta19a by ＫＥＮくん
+# AviUtl ExEdit2 version 2.00 beta20 by ＫＥＮくん
 
 ## はじめに
 
