@@ -630,13 +630,17 @@ cam = obj.getoption("camera_param")
 
 #### サンプラーモード
 
-obj.draw(),obj.drawpoly()描画時のサンプラーを変更します
+obj.draw(),obj.drawpoly()描画時のサンプラーを変更します。
+※obj.drawpoly()でuv座標を引数で指定した場合はuv座標が領域範囲でクリップされます ※互換対応
 `obj.setoption("sampler",value)`
 
 - `value`：
-  - `"clip"` = 領域外は透明色
-  - `"clamp"` = 領域外は一番外側の色
-  - `"loop"` = 領域外はループ
+  - `"clip"`：領域外は透明色 ※obj.draw()のデフォルト設定
+  - `"clamp"`：領域外は一番外側の色 ※obj.drawpoly()のデフォルト設定
+  - `"loop"`：領域外はループ
+  - `"mirror"`：領域外は領域を反転しながらループ
+  - `"dot"`：拡大縮小補間をしない（領域外は透明色）
+    ※省略時はデフォルト設定になります
 
 ### obj.getoption(name,...)
 

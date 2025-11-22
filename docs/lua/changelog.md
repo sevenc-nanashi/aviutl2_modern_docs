@@ -5,6 +5,10 @@ description: AviUtl ExEdit2のLuaスクリプトの更新履歴について説�
 
 # 更新履歴
 
+## 2.00 beta21 <Badge text='2025/11/22' />
+
+- obj.setoption("sampler")のサンプラーの種類を追加
+
 ## 2.00 beta20 <Badge text='2025/11/16' />
 
 - obj.sx,obj.sy,obj.szの項目を追加
