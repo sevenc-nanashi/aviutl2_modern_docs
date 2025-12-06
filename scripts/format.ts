@@ -129,6 +129,7 @@ type HtmlNode = Node & {
 type CodeNode = Node & {
   type: "code";
   lang: string | null;
+  meta: string | null;
   value: string;
 };
 
@@ -213,7 +214,12 @@ async function formatLuaNodes(ast: AstRoot, baseFormatted: string) {
         "lang" in node &&
         typeof node.lang === "string" &&
         node.lang &&
-        node.lang.toLowerCase() === "aulua"
+        node.lang.toLowerCase() === "aulua" &&
+        !(
+          "meta" in node &&
+          typeof node.meta === "string" &&
+          node.meta.includes("noformat")
+        )
       ),
   );
 

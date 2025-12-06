@@ -41,7 +41,7 @@ obj.ox = obj.ox + vx * obj.time
 デフォルト値が`true`か`false`の場合は変数がboolean型（`true`/`false`）になります。
 ※旧スクリプトファイル形式の`--check0:項目名,デフォルト値（0か1）`も利用できます。(変数はboolean型)
 
-```aulua
+```aulua noformat
 --check@grav:重力,0
 --check@speed:速度,false
 if grav == 1 then ...
@@ -672,7 +672,7 @@ obj.draw(),obj.drawpoly()描画時のサンプラーを変更します。
 
 ```aulua
 --track@vx:X速度,-10,10,0
-obj.getoption("track_mode","vx")
+obj.getoption("track_mode", "vx")
 ```
 
 #### オブジェクトの区間の数
