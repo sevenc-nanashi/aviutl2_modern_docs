@@ -5,6 +5,10 @@ description: AviUtl ExEdit2のLuaスクリプトの更新履歴について説�
 
 # 更新履歴
 
+## 2.00 beta23a <Badge text='2025/12/7' />
+
+- obj.getinfo("bpm")を追加
+
 ## 2.00 beta23 <Badge text='2025/12/6' />
 
 - obj.getvalue()に"frame_s","frame_e"の指定を追加

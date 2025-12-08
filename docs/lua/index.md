@@ -1131,6 +1131,14 @@ max_x, max_y = obj.getinfo("image_max")
 
 - 戻り値：最大画像サイズ（横幅,高さ）
 
+## グリッド（BPM）の情報を取得する
+
+```aulua
+tempo, beat, offset = obj.getinfo("bpm")
+```
+
+- 戻り値：テンポ,拍子,基準時間
+
 #### アプリ起動からの経過時間を取得する
 
 ```aulua
