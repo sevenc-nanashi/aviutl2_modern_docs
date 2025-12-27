@@ -1,7 +1,9 @@
+import path from "node:path";
 import { defineConfig } from "vitepress";
 import { jaModel, Parser } from "budoux";
 import markdownItBudoux from "markdown-it-budoux";
 import llmstxt from "vitepress-plugin-llms";
+import license from "rollup-plugin-license";
 import { auluaGrammar } from "./extensions/aulua.ts";
 import { autxtGrammar } from "./extensions/autxt.ts";
 import { customFence } from "./extensions/customFence.ts";
@@ -20,6 +22,32 @@ export default defineConfig({
   cleanUrls: true,
   vite: {
     plugins: [
+      {
+        name: "add-license-banner",
+        generateBundle(_, bundle) {
+          const banner = `/** Check THIRD_PARTY_NOTICES.txt for license details. */`;
+          for (const file of Object.values(bundle)) {
+            if (file.type === "chunk") {
+              file.code = `${banner}\n${file.code}`;
+            }
+          }
+        },
+      },
+      license({
+        cwd: process.cwd(),
+
+        thirdParty: {
+          output: {
+            file: path.join(
+              import.meta.dirname,
+              "dist",
+              "THIRD_PARTY_NOTICES.txt",
+            ),
+            encoding: "utf-8",
+          },
+        },
+      }),
+      // @ts-expect-error 動いてるのでヨシ！
       llmstxt({
         excludeIndexPage: false,
         customTemplateVariables: {
@@ -32,83 +60,85 @@ export default defineConfig({
     },
   },
   transformHead(ctx) {
-    ctx.head.push([
-      "meta",
-      {
-        property: "og:title",
-        content: ctx.pageData.title,
-      },
-    ]);
-    ctx.head.push([
-      "meta",
-      {
-        property: "og:site_name",
-        content: "AviUtl2 Modern Docs",
-      },
-    ]);
-    ctx.head.push([
-      "meta",
-      {
-        property: "og:description",
-        content: ctx.pageData.description || description,
-      },
-    ]);
-    ctx.head.push([
-      "meta",
-      {
-        property: "og:type",
-        content: "website",
-      },
-    ]);
-    ctx.head.push([
-      "meta",
-      {
-        property: "og:image",
-        content: logoPngUrl,
-      },
-    ]);
-    ctx.head.push([
-      "meta",
-      {
-        name: "twitter:card",
-        content: "summary",
-      },
-    ]);
-    ctx.head.push([
-      "meta",
-      {
-        name: "twitter:title",
-        content: ctx.pageData.title,
-      },
-    ]);
-    ctx.head.push([
-      "meta",
-      {
-        name: "twitter:description",
-        content: ctx.pageData.description || description,
-      },
-    ]);
-    ctx.head.push([
-      "meta",
-      {
-        name: "twitter:image",
-        content: logoPngUrl,
-      },
-    ]);
-    ctx.head.push([
-      "link",
-      {
-        rel: "icon",
-        href: logoSvgUrl,
-      },
-    ]);
-    ctx.head.push([
-      "link",
-      {
-        rel: "apple-touch-icon",
-        href: logoPngUrl,
-      },
-    ]);
+    ctx.head.push(
+      [
+        "meta",
+        {
+          property: "og:title",
+          content: ctx.pageData.title,
+        },
+      ],
+      [
+        "meta",
+        {
+          property: "og:site_name",
+          content: "AviUtl2 Modern Docs",
+        },
+      ],
+      [
+        "meta",
+        {
+          property: "og:description",
+          content: ctx.pageData.description || description,
+        },
+      ],
+      [
+        "meta",
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+      [
+        "meta",
+        {
+          property: "og:image",
+          content: logoPngUrl,
+        },
+      ],
+      [
+        "meta",
+        {
+          name: "twitter:card",
+          content: "summary",
+        },
+      ],
+      [
+        "meta",
+        {
+          name: "twitter:title",
+          content: ctx.pageData.title,
+        },
+      ],
+      [
+        "meta",
+        {
+          name: "twitter:description",
+          content: ctx.pageData.description || description,
+        },
+      ],
+      [
+        "meta",
+        {
+          name: "twitter:image",
+          content: logoPngUrl,
+        },
+      ],
+      [
+        "link",
+        {
+          rel: "icon",
+          href: logoSvgUrl,
+        },
+      ],
+      [
+        "link",
+        {
+          rel: "apple-touch-icon",
+          href: logoPngUrl,
+        },
+      ],
+    );
   },
   markdown: {
     breaks: true,
