@@ -129,6 +129,8 @@ obj.setanchor("pos2", 2, "line", "color", RGB(0, 255, 0))
 スクリプトファイル（\*.tra2）の先頭で`--twopoint`のように指定すると中間点を無視する設定になります。
 `--speed:加速初期値（0/1）,減速初期値（0/1）`のように指定すると加減速の設定が出来るようになります。
 `--param:初期値`のように指定するとトラックバーの設定値が指定出来るようになります。
+`--param:項目名,初期値`のように指定すると設定ダイアログの項目名を指定することが出来ます。
+`--param`を複数行指定することで複数の設定値を持つことが出来ます。
 `--timecontrol`のように指定するとトラックバーの時間制御編集が出来るようになります。
 
 ```aulua
@@ -136,6 +138,12 @@ index, ratio = math.modf(obj.getpoint("index"))
 st = obj.getpoint(index)
 ed = obj.getpoint(index + 1)
 return st + (ed - st) * ratio
+```
+
+### 複数の設定値を指定した場合
+
+```aulua
+param1, param2 = obj.getpoint("param")
 ```
 
 ## ピクセルシェーダーを利用する例

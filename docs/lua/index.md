@@ -222,7 +222,7 @@ float4 psmain(float4 pos : SV_Position, float2 uv : TEXCOORD) : SV_Target
 
 ### その他
 
-※旧スクリプトファイル形式の--dialog、--paramも利用できます。個々の設定項目が作成されます。
+※旧スクリプトファイル形式の`--dialog`、`--param`も利用できます。個々の設定項目が作成されます。
 
 ## 変数
 
@@ -1106,6 +1106,7 @@ n, rate, buf = obj.getaudio(nil, "c:\\test.wav", "pcm.r", 1000)
   - `"decelerate"`：減速度が設定されているかを取得します。
     戻り値：`true`：有効 / `false`：無効
   - `"param"`：トラックバーの設定値を取得します。
+    設定値が複数ある場合は戻り値が複数になります。
   - `"link"`：関連トラックでのインデックスと総数を取得します。
     `index, num = obj.getpoint("link")`
     関連トラックは座標等で他のトラックの値を取得する為に使用します。
